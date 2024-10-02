@@ -11,7 +11,7 @@ const obj1 = {
 let obj2= Object.assign({},obj1);
 console.log("assign",obj2);
 
-// Implementing polyfill using Prototypical Inheritence
+// Implementing polyfill 
 /**
  * A few attributes os Object.assign to consider
  * - Shallow copy
