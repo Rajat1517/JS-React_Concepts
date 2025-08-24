@@ -74,3 +74,36 @@ const obj3 = Object.myDeep(obj);
 obj3.b.c = 23;
 obj3.b.d.e = 54;
 console.log("obj3", obj3);
+
+Object.deepCopy2 = function (obj) {
+  if (["number", "string", "boolean"].includes(typeof obj)) return obj;
+  if (obj instanceof Array || Array.isArray(obj))
+    return obj.map((item) => item);
+
+  if (obj instanceof RegExp) return new RegExp(obj);
+  if (obj instanceof Date) return new Date(obj);
+  if (obj instanceof Map) {
+    let res = new Map();
+    obj.forEach((key,val) => {
+      res.set(key, Object.mydeepCopy2(val));
+    });
+    return res;
+  }
+  if (obj instanceof Set) {
+    let res = new Set();
+    obj.forEach((val) => {
+      res.add(Object.mydeepCopy2(val));
+    });
+    return res;
+  }
+  if (obj instanceof Symbol) return new Symbol(obj);
+
+  let res = {};
+
+  for (let key in obj) {
+    if (obj.hasOwnProperty(key)) {
+      res[key] = Object.mydeepCopy2(obj[key]);
+    }
+  }
+  return res;
+};
