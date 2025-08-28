@@ -9,12 +9,10 @@ export const updateData = (data) => {
 
 export const fetchData = () => {
   return async (dispatch) => {
-    try {
-        console.log("hello")    
+    try { 
       const res = await fetch("https://jsonplaceholder.typicode.com/todos/1");
       const result = await res.json();
       console.log(result);
-    //   sessionStorage.setItem("data", JSON.stringify(result));
       dispatch(updateData(JSON.stringify(result)));
     } catch (error) {
       dispatch(updateData("Error occurred!"));
