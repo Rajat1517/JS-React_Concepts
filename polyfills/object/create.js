@@ -72,3 +72,18 @@ const rafale= Object.myCreate(aircraft,{
 })
 
 rafale.fly();
+
+
+
+
+
+/**
+ * 
+ * 
+ * Object.create(null) => It is an actual true empty object. It does not even have hasOwnProperty and toString methods.
+ * 
+ * It is usually used to create a pure dictionaries like:
+ * 
+ * const map = Object.create(null);
+ * now map can have any key even proto, constructor, etc. with no conflicts of key names.
+ */
